@@ -1,25 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:mealsapp/models/category.dart';
 
 class CategoryCard extends StatelessWidget {
-  const CategoryCard({super.key});
+  final Category category;
+  final Function(Category) onTap;
+
+  const CategoryCard({super.key, required this.category, required this.onTap});
 
   //dışarıdan alınan kategori modeli rengi ve ismi ile birlikte bu kartta kullanılmalı.
   //ontap aksiyonu dışardan aldığı fonksiyonu haberdar etmeli.
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Kategoriler"),),
-      body: InkWell(
-        onTap: (){
-          print("Kategoriye tıklandı");
-        },
-        child: Container(
-          decoration: BoxDecoration(
-
-          ),
-          padding: const EdgeInsets.all(16.0),
-          child: const Text("Kategori 1"),
+    return InkWell(
+      onTap: () {
+        onTap(category);
+        print("${category.name} Tıklandı");
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(colors: [
+            Colors.orange.withOpacity(0.7),
+            Colors.orange.withOpacity(0.3),
+          ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+          borderRadius: BorderRadius.circular(16),
+        ),
+        padding: const EdgeInsets.all(16.0),
+        child: Text(
+          category.name,
+          style: const TextStyle(fontSize: 20),
         ),
       ),
     );
