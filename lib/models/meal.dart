@@ -4,6 +4,7 @@ class Meal{
   final String name;
   final String imageUrl;
   final List<String> ingredients;
+  final List<String> cookingSteps;
   final double rating;
 
   const Meal(
@@ -13,6 +14,7 @@ class Meal{
         required this.name,
         required this.imageUrl,
         required this.ingredients,
-        required this.rating
+        required this.rating,
+        required this.cookingSteps
       });
 }
