@@ -8,10 +8,15 @@ class Categories extends StatelessWidget {
   const Categories({super.key});
   @override
   Widget build(BuildContext context) {
-    //model olarak data dosyasından gelmeli
     return Scaffold(
       appBar: AppBar(
         title: const Text("Kategoriler"),
+        actions: [
+          IconButton(onPressed: (){
+            // TODO favoriler sayfasına geçiş yapsın istiyoruz...
+            // TODO Bireysel araştırma => Flutter Provider
+          }, icon: const Icon(Icons.favorite),),
+        ],
       ),
       body: GridView(
         padding: const EdgeInsets.all(16),
