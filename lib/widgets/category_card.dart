@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mealsapp/models/category.dart';
+import 'package:mealsapp/screens/category_details.dart';
 
 class CategoryCard extends StatelessWidget {
   final Category category;
@@ -13,14 +14,17 @@ class CategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        onTap(category);
-        print("${category.name} Tıklandı");
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => CategoryDetailScreen(category: category),
+          ),
+        );
       },
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(colors: [
-            Colors.orange.withOpacity(0.7),
-            Colors.orange.withOpacity(0.3),
+            category.color.withOpacity(0.5),
+            category.color.withOpacity(0.9),
           ], begin: Alignment.topLeft, end: Alignment.bottomRight),
           borderRadius: BorderRadius.circular(16),
         ),
@@ -28,9 +32,8 @@ class CategoryCard extends StatelessWidget {
         child: Center(
           child: Text(
             category.name,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 20,
-              color: category.color,
             ),
           ),
         ),

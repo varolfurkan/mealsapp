@@ -20,7 +20,7 @@ class Categories extends StatelessWidget {
             crossAxisSpacing: 20,
             mainAxisSpacing: 10,
             childAspectRatio: 4/2),
-        children: categories.map((category) => CategoryCard(category: category, onTap: (category) {},)).toList(),
+        children: categories.map((category) => CategoryCard(category: category, onTap: (onTap) {})).toList(),
       ),
     );
   }
